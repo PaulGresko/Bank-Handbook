@@ -1,4 +1,4 @@
-package com.example.bankSystem.models;
+package com.example.bankSystem.models.bankModels;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,30 +10,29 @@ import jakarta.xml.bind.annotation.*;
 
 import java.util.Date;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "acc_rstr_list")
-@XmlRootElement(name = "AccRstrList")
+@Table(name = "rstr_list")
+@XmlRootElement(name="RstrList")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AccRstrList {
+public class RstrList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "acc_rstr_date")
-    @XmlAttribute(name = "AccRstrDate")
-    private Date accRstrDate;
+    @Column(name = "rstr_date")
+    @XmlAttribute(name = "RstrDate")
+    private Date rstrDate;
 
-    @Column(name = "acc_rstr")
-    @XmlAttribute(name = "AccRstr")
-    private String accRstr;
+    @Column(name = "rstr")
+    @XmlAttribute(name = "Rstr")
+    private String rstr;
 
     @ManyToOne
-    @JoinColumn(name = "accounts_id")
-    private Account account;
+    @JoinColumn(name = "participant_info_id")
+    private ParticipantInfo participantInfo;
 }

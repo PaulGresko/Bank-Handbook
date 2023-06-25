@@ -1,4 +1,4 @@
-package com.example.bankSystem.models;
+package com.example.bankSystem.models.bankModels;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
 package com.example.bankSystem.repositories;
 
-import com.example.bankSystem.models.ParticipantInfo;
+import com.example.bankSystem.models.bankModels.ParticipantInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

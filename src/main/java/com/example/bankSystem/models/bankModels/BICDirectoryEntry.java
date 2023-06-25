@@ -1,7 +1,6 @@
-package com.example.bankSystem.models;
+package com.example.bankSystem.models.bankModels;
 
 import jakarta.persistence.*;
-import jakarta.xml.bind.Unmarshaller;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

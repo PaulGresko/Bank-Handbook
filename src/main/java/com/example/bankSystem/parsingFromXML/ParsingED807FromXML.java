@@ -2,7 +2,7 @@ package com.example.bankSystem.parsingFromXML;
 
 
 
-import com.example.bankSystem.models.*;
+import com.example.bankSystem.models.bankModels.*;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;

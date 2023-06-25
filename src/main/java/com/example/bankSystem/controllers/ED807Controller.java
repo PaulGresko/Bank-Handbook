@@ -1,11 +1,11 @@
 package com.example.bankSystem.controllers;
 
 
-import com.example.bankSystem.models.*;
+import com.example.bankSystem.models.bankModels.ED807;
 import com.example.bankSystem.parsingFromXML.ParsingED807FromXML;
-import com.example.bankSystem.repositories.BICDirectoryEntryRepository;
 import com.example.bankSystem.repositories.ED807Repository;
 import jakarta.xml.bind.JAXBException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,11 +18,10 @@ import java.util.List;
 public class ED807Controller {
 
     private final ED807Repository repository;
-    private final BICDirectoryEntryRepository bicDirectoryEntryRepository;
 
-    public ED807Controller(ED807Repository repository, BICDirectoryEntryRepository bicDirectoryEntryRepository) {
+    @Autowired
+    public ED807Controller(ED807Repository repository) {
         this.repository = repository;
-        this.bicDirectoryEntryRepository = bicDirectoryEntryRepository;
     }
 
     @GetMapping
@@ -32,5 +31,8 @@ public class ED807Controller {
         return ed807;
     }
 
-
+    @GetMapping("/hello")
+    public List<ED807> getHello(){
+        return repository.findAll();
+    }
 }

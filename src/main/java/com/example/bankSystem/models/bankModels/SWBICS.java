@@ -1,4 +1,4 @@
-package com.example.bankSystem.models;
+package com.example.bankSystem.models.bankModels;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,7 +25,7 @@ public class SWBICS {
     private Long id;
 
     @Column(name = "default_swbic")
-    @XmlAttribute(name = "DefaultSWBIC") // todo Сделать фото
+    @XmlAttribute(name = "DefaultSWBIC")
     private Boolean defaultSWBIC;
 
     @Column(name = "swbic")
