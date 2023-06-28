@@ -16,8 +16,6 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "rstr_list")
-@XmlRootElement(name="RstrList")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class RstrList {
 
     @Id
@@ -25,11 +23,10 @@ public class RstrList {
     private Long id;
 
     @Column(name = "rstr_date")
-    @XmlAttribute(name = "RstrDate")
+    @Temporal(TemporalType.DATE)
     private Date rstrDate;
 
     @Column(name = "rstr")
-    @XmlAttribute(name = "Rstr")
     private String rstr;
 
     @ManyToOne

@@ -21,6 +21,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
+                .requestMatchers(AntPathRequestMatcher.antMatcher("/**")).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()

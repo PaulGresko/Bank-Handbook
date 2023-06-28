@@ -18,7 +18,7 @@ import jakarta.xml.bind.annotation.*;
 @Table(name = "swbics")
 @XmlRootElement(name="SWBICS")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class SWBICS {
+public class Swbics {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +34,6 @@ public class SWBICS {
 
     @OneToOne
     @JoinColumn(name = "bic_directory_entry_id")
-    @XmlElementRef
+//    @XmlElementRef
     private BICDirectoryEntry bicDirectoryEntry;
 }

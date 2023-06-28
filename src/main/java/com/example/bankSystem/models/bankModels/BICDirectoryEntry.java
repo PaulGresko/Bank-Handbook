@@ -23,7 +23,7 @@ import java.util.List;
 @Table(name = "bic_directory_entry")
 @XmlRootElement(name = "BICDirectoryEntry")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class BICDirectoryEntry {
+public class BICDirectoryEntry{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,5 +48,5 @@ public class BICDirectoryEntry {
 
     @OneToOne(mappedBy = "bicDirectoryEntry", cascade = CascadeType.ALL)
     @XmlElement(name = "SWBICS",namespace = "urn:cbr-ru:ed:v2.0")
-    private SWBICS swbics;
+    private Swbics swbics;
 }

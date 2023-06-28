@@ -21,8 +21,6 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "accounts")
-@XmlRootElement(name = "Accounts")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Account {
 
     @Id
@@ -30,27 +28,22 @@ public class Account {
     private Long id;
 
     @Column(name = "date_in")
-    @XmlAttribute(name = "DateIn")
+    @Temporal(TemporalType.DATE)
     private Date dateIn;
 
     @Column(name = "account_status")
-    @XmlAttribute(name = "AccountStatus")
     private String accountStatus;
 
     @Column(name = "account_cbr_bic")
-    @XmlAttribute(name = "AccountCBRBIC")
     private String accountCBRBIC;
 
     @Column(name = "ck")
-    @XmlAttribute(name = "CK")
     private String ck;
 
     @Column(name = "regulation_account_type")
-    @XmlAttribute(name = "RegulationAccountType")
     private String regulationAccountType;
 
     @Column(name = "account")
-    @XmlAttribute(name = "Account")
     private String account;
 
     @ManyToOne
@@ -58,6 +51,5 @@ public class Account {
     private BICDirectoryEntry bicDirectoryEntry;
 
     @OneToMany(mappedBy = "account",cascade = CascadeType.ALL)
-    @XmlElement(name = "AccRstrList", namespace = "urn:cbr-ru:ed:v2.0")
     private List<AccRstrList> accRstrLists = new ArrayList<>();
 }
