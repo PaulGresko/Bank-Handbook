@@ -25,14 +25,12 @@ public class Audit {
     @CreatedBy
     private String createdBy;
 
-
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastModifiedDate;
 
     @LastModifiedBy
     private String lastModifiedBy;
-
 
     @Column(name="deleted_date")
     @Temporal(TemporalType.TIMESTAMP)

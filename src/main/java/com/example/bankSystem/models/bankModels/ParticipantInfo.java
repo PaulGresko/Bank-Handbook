@@ -44,6 +44,10 @@ public class ParticipantInfo {
     @Temporal(TemporalType.DATE)
     private Date dateIn;
 
+    @Column(name = "date_out")
+    @Temporal(TemporalType.DATE)
+    private Date dateOut;
+
     @Column(name = "adr")
     private String adr;
 
@@ -64,6 +68,12 @@ public class ParticipantInfo {
 
     @Column(name = "name_p")
     private String nameP;
+
+    @Column(name="prnt_bic")
+    private String prntBIC;
+
+    @Column(name = "engl_name")
+    private String englName;
 
     @Column(name="reg_N")
     private String regN;

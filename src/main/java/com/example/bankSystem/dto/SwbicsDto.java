@@ -1,6 +1,7 @@
 package com.example.bankSystem.dto;
 
 
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -23,5 +24,6 @@ public class SwbicsDto {
     private Boolean defaultSWBIC;
 
     @XmlAttribute(name = "SWBIC")
+    @Size(min=8, max = 11)
     private String swbic;
 }

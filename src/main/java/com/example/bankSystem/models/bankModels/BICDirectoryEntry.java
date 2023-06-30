@@ -1,5 +1,6 @@
 package com.example.bankSystem.models.bankModels;
 
+import com.example.bankSystem.utils.Enums.ChangeType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,32 +22,30 @@ import java.util.List;
 @Entity
 @DynamicUpdate
 @Table(name = "bic_directory_entry")
-@XmlRootElement(name = "BICDirectoryEntry")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class BICDirectoryEntry{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Column(name = "bic")
     @XmlAttribute(name = "BIC")
     private String bic;
+
+    @Column(name = "change_type")
+    @Enumerated(EnumType.STRING)
+    private ChangeType changeType; // todo убедиться в надобности
 
     @ManyToOne
     @JoinColumn(name = "ed807_id")
     private ED807 ed807;
 
     @OneToOne(mappedBy = "bicDirectoryEntry", cascade = CascadeType.ALL)
-    @XmlElement(name = "ParticipantInfo",namespace = "urn:cbr-ru:ed:v2.0")
     private ParticipantInfo participantInfo;
 
     @OneToMany(mappedBy = "bicDirectoryEntry", cascade = CascadeType.ALL)
-    @XmlElement(name = "Accounts",namespace = "urn:cbr-ru:ed:v2.0")
     private List<Account> accounts = new ArrayList<>();
 
     @OneToOne(mappedBy = "bicDirectoryEntry", cascade = CascadeType.ALL)
-    @XmlElement(name = "SWBICS",namespace = "urn:cbr-ru:ed:v2.0")
     private Swbics swbics;
 }

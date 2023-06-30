@@ -34,6 +34,5 @@ public class Swbics {
 
     @OneToOne
     @JoinColumn(name = "bic_directory_entry_id")
-//    @XmlElementRef
     private BICDirectoryEntry bicDirectoryEntry;
 }

@@ -1,4 +1,4 @@
-package com.example.bankSystem.config;
+package com.example.bankSystem.utils;
 
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.context.SecurityContextHolder;

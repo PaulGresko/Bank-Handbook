@@ -18,8 +18,7 @@ public class ParsingED807FromXML {
 
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
-        ED807Dto ed807 = (ED807Dto) unmarshaller.unmarshal(new File(filename));
-//        List<BICDirectoryEntry> bicDirectoryEntries = ed807.getBicDirectoryEntries();
+        //        List<BICDirectoryEntry> bicDirectoryEntries = ed807.getBicDirectoryEntries();
 //        if (!bicDirectoryEntries.isEmpty()) {
 //            for (BICDirectoryEntry entry : bicDirectoryEntries) {
 //                entry.setEd807(ed807);
@@ -57,6 +56,6 @@ public class ParsingED807FromXML {
 //        }
 //        ed807.setBicDirectoryEntries(bicDirectoryEntries);
 
-        return ed807;
+        return (ED807Dto) unmarshaller.unmarshal(new File(filename));
     }
 }

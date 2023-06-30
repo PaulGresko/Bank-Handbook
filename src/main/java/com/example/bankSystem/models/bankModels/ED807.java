@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-import jakarta.xml.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -44,6 +42,9 @@ public class ED807 extends Audit {
 
     @Column(name = "ed_author")
     private String edAuthor;
+
+    @Column(name = "ed_receiver")
+    private String eDReceiver;
 
     @Column(name = "ed_date")
     @Temporal(TemporalType.DATE)
