@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RstrListRepository extends JpaRepository<RstrList,Long> {
+    RstrList findByParticipantInfoId(Long id);
 }

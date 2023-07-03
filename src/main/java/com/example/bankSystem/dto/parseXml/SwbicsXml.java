@@ -1,4 +1,4 @@
-package com.example.bankSystem.dto;
+package com.example.bankSystem.dto.parseXml;
 
 
 import jakarta.validation.constraints.Size;
@@ -18,7 +18,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @XmlRootElement(name="SWBICS")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class SwbicsDto {
+public class SwbicsXml {
 
     @XmlAttribute(name = "DefaultSWBIC")
     private Boolean defaultSWBIC;

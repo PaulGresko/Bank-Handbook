@@ -1,11 +1,12 @@
-package com.example.bankSystem.dto;
+package com.example.bankSystem.dto.parseXml;
 
 
-import com.example.bankSystem.utils.Enums.AccRstr;
+import com.example.bankSystem.enums.AccRstrType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -23,7 +24,7 @@ import java.util.Date;
 @AllArgsConstructor
 @XmlRootElement(name = "AccRstrList")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AccRstrListDto {
+public class AccRstrListXml {
 
     @XmlAttribute(name = "AccRstrDate")
     @Temporal(TemporalType.DATE)
@@ -31,6 +32,10 @@ public class AccRstrListDto {
 
     @XmlAttribute(name = "AccRstr")
     @Enumerated(EnumType.STRING)
-    private AccRstr accRstr;
+    private AccRstrType accRstrType;
+
+    @XmlAttribute(name = "SuccessorBIC")
+    @Size(min = 9,max = 9)
+    private String SuccessorBic;
 
 }

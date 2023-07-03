@@ -1,5 +1,6 @@
 package com.example.bankSystem.models.bankModels;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,8 +17,6 @@ import jakarta.xml.bind.annotation.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "swbics")
-@XmlRootElement(name="SWBICS")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Swbics {
 
     @Id
@@ -34,5 +33,6 @@ public class Swbics {
 
     @OneToOne
     @JoinColumn(name = "bic_directory_entry_id")
+    @JsonIgnore
     private BICDirectoryEntry bicDirectoryEntry;
 }

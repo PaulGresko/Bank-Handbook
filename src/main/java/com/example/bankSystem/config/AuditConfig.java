@@ -1,15 +1,19 @@
 package com.example.bankSystem.config;
 
-import com.example.bankSystem.utils.AuditorAwareImpl;
-import org.springframework.context.annotation.Bean;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.util.Optional;
 
 @Configuration
 @EnableJpaAuditing
-public class AuditConfig {
+public class AuditConfig implements AuditorAware<String> {
 
-    @Bean
-    public AuditorAware<String> auditorAware(){ return new AuditorAwareImpl(); }
+    @Override
+    public Optional<String> getCurrentAuditor() {
+        return Optional.of(SecurityContextHolder.getContext().getAuthentication().getName());
+    }
 }

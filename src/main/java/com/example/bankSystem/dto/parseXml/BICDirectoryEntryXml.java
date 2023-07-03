@@ -1,10 +1,9 @@
-package com.example.bankSystem.dto;
+package com.example.bankSystem.dto.parseXml;
 
 
-import com.example.bankSystem.utils.Enums.ChangeType;
+import com.example.bankSystem.enums.ChangeType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.Temporal;
 import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.*;
 import lombok.AllArgsConstructor;
@@ -22,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @XmlRootElement(name = "BICDirectoryEntry")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class BICDirectoryEntryDto {
+public class BICDirectoryEntryXml {
 
 
     @XmlAttribute(name = "BIC")
@@ -34,11 +33,11 @@ public class BICDirectoryEntryDto {
     private ChangeType changeType;
 
     @XmlElement(name = "ParticipantInfo",namespace = "urn:cbr-ru:ed:v2.0")
-    private ParticipantInfoDto participantInfo;
+    private ParticipantInfoXml participantInfo;
 
     @XmlElement(name = "Accounts",namespace = "urn:cbr-ru:ed:v2.0")
-    private List<AccountDto> accounts = new ArrayList<>();
+    private List<AccountXml> accounts = new ArrayList<>();
 
     @XmlElement(name = "SWBICS",namespace = "urn:cbr-ru:ed:v2.0")
-    private SwbicsDto swbics;
+    private SwbicsXml swbics;
 }

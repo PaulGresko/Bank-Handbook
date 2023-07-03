@@ -1,12 +1,13 @@
 package com.example.bankSystem.models.bankModels;
 
+import com.example.bankSystem.enums.AccRstrType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import jakarta.xml.bind.annotation.*;
 
 import java.util.Date;
 
@@ -28,9 +29,15 @@ public class AccRstrList {
     private Date accRstrDate;
 
     @Column(name = "acc_rstr")
-    private String accRstr;
+    private AccRstrType accRstr;
+
+    @Column(name = "successor_bic")
+    private String SuccessorBic;
 
     @ManyToOne
     @JoinColumn(name = "accounts_id")
+    @JsonIgnore
     private Account account;
+
+
 }

@@ -1,12 +1,12 @@
 package com.example.bankSystem.models.bankModels;
 
+import com.example.bankSystem.enums.ParticipantStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import jakarta.xml.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,7 +26,8 @@ public class ParticipantInfo {
     private Long id;
 
     @Column(name = "participant_status")
-    private String participantStatus;
+    @Enumerated(EnumType.STRING)
+    private ParticipantStatus participantStatus;
 
     @Column(name = "uid")
     private String uid;
@@ -80,6 +81,7 @@ public class ParticipantInfo {
 
     @OneToOne
     @JoinColumn(name = "bic_directory_entry_id")
+    @JsonIgnore
     private BICDirectoryEntry bicDirectoryEntry;
 
     @OneToMany(mappedBy = "participantInfo",cascade = CascadeType.ALL)

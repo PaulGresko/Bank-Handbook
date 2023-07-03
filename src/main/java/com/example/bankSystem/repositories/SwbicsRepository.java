@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SwbicsRepository extends JpaRepository<Swbics,Long> {
+    Swbics findByBicDirectoryEntryId(Long id);
 }

@@ -1,12 +1,12 @@
 package com.example.bankSystem.models.bankModels;
 
+import com.example.bankSystem.enums.RstrType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import jakarta.xml.bind.annotation.*;
 
 import java.util.Date;
 
@@ -27,9 +27,11 @@ public class RstrList {
     private Date rstrDate;
 
     @Column(name = "rstr")
-    private String rstr;
+    @Enumerated(EnumType.STRING)
+    private RstrType rstr;
 
     @ManyToOne
     @JoinColumn(name = "participant_info_id")
+    @JsonIgnore
     private ParticipantInfo participantInfo;
 }

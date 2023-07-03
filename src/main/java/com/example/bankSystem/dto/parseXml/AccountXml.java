@@ -1,7 +1,7 @@
-package com.example.bankSystem.dto;
+package com.example.bankSystem.dto.parseXml;
 
-import com.example.bankSystem.utils.Enums.AccountStatus;
-import com.example.bankSystem.utils.Enums.RegulationAccountType;
+import com.example.bankSystem.enums.AccountStatus;
+import com.example.bankSystem.enums.AccountType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Temporal;
@@ -24,11 +24,15 @@ import java.util.List;
 @Setter
 @XmlRootElement(name = "Accounts")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AccountDto {
+public class AccountXml {
 
     @XmlAttribute(name = "DateIn")
     @Temporal(TemporalType.DATE)
     private Date dateIn;
+
+    @XmlAttribute(name = "DateOut")
+    @Temporal(TemporalType.DATE)
+    private Date dateOut;
 
     @XmlAttribute(name = "AccountStatus")
     @Enumerated(EnumType.STRING)
@@ -44,12 +48,12 @@ public class AccountDto {
 
     @XmlAttribute(name = "RegulationAccountType")
     @Enumerated(EnumType.STRING)
-    private RegulationAccountType regulationAccountType;
+    private AccountType regulationAccountType;
 
     @XmlAttribute(name = "Account")
     @Size(min = 20, max = 20)
     private String account;
 
     @XmlElement(name = "AccRstrList", namespace = "urn:cbr-ru:ed:v2.0")
-    private List<AccRstrListDto> accRstrLists = new ArrayList<>();
+    private List<AccRstrListXml> accRstrLists = new ArrayList<>();
 }

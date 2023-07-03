@@ -1,5 +1,8 @@
 package com.example.bankSystem.models.bankModels;
 
+import com.example.bankSystem.enums.AccountStatus;
+import com.example.bankSystem.enums.AccountType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,8 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-import jakarta.xml.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,8 +32,13 @@ public class Account {
     @Temporal(TemporalType.DATE)
     private Date dateIn;
 
+    @Column(name = "date_out")
+    @Temporal(TemporalType.DATE)
+    private Date dateOut;
+
     @Column(name = "account_status")
-    private String accountStatus;
+    @Enumerated(EnumType.STRING)
+    private AccountStatus accountStatus;
 
     @Column(name = "account_cbr_bic")
     private String accountCBRBIC;
@@ -41,13 +47,14 @@ public class Account {
     private String ck;
 
     @Column(name = "regulation_account_type")
-    private String regulationAccountType;
+    private AccountType regulationAccountType;
 
     @Column(name = "account")
     private String account;
 
     @ManyToOne
     @JoinColumn(name = "bic_directory_entry_id")
+    @JsonIgnore
     private BICDirectoryEntry bicDirectoryEntry;
 
     @OneToMany(mappedBy = "account",cascade = CascadeType.ALL)

@@ -1,51 +1,54 @@
 package com.example.bankSystem.controllers;
 
 
-import com.example.bankSystem.dto.ED807Dto;
-import com.example.bankSystem.mapper.ED807Mapper;
+
+import com.example.bankSystem.dto.parseXml.ED807Xml;
 import com.example.bankSystem.models.bankModels.ED807;
-import com.example.bankSystem.parsingFromXML.ParsingED807FromXML;
-import com.example.bankSystem.repositories.ED807Repository;
+import com.example.bankSystem.services.ED807Service;
 import jakarta.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
-@RequestMapping("/info")
+@RequestMapping("/ed807")
 public class ED807Controller {
 
-    private final ED807Repository repository;
-    private final ED807Mapper ed807Mapper;
+    private final ED807Service ed807Service;
 
     @Autowired
-    public ED807Controller(ED807Repository repository, ED807Mapper ed807Mapper) {
-        this.repository = repository;
-        this.ed807Mapper = ed807Mapper;
+    public ED807Controller(ED807Service ed807Service) {
+        this.ed807Service = ed807Service;
+    }
+
+
+    @GetMapping("/save")
+    public ED807Xml getInfo() throws JAXBException {
+        return ed807Service.parse("C:\\Users\\Paul\\Desktop\\Practic\\20220630_ED807_full.xml");
     }
 
     @GetMapping
-    public ED807Dto getInfo() throws JAXBException {
-        ED807Dto ed807 = ParsingED807FromXML.parse("C:\\Users\\Paul\\Desktop\\Practic\\20220630_ED807_full.xml");
-        repository.save(ed807Mapper.toModel(ed807));
-        return ed807;
+    public List<ED807> getAll(@RequestParam(defaultValue = "1") Integer page){
+        return  ed807Service.getAll(page);
     }
 
-    @GetMapping("/hello")
-    public List<ED807> getHello(){
-        List<ED807> ed807List = repository.findAll();
-        return  ed807List;
+    @GetMapping("/delete/{id}")
+    public void deleteED807(@PathVariable Long id){
+        ed807Service.delete(id);
     }
 
-    @GetMapping("/delete")
-    public void deleteED807(){
-        ED807 ed807 = repository.findById(Long.valueOf(1)).get();
-        ed807.setDeleted(true);
-        repository.save(ed807);
+    @GetMapping("/recover/{id}")
+    public void recoverED807(@PathVariable Long id){
+        ed807Service.recover(id);
+    }
+
+
+    @GetMapping("/count")
+    public Map<String, Long> getCount(){
+        return Map.of("count", ed807Service.getCount());
     }
 
 }

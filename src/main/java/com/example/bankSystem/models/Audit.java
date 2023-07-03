@@ -32,22 +32,6 @@ public class Audit {
     @LastModifiedBy
     private String lastModifiedBy;
 
-    @Column(name="deleted_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date deletedDate;
-
-    @Column(name="deleted_by")
-    private String deletedBy;
-
     @Column(name="deleted")
     private Boolean deleted = false;
-
-
-    @PreUpdate
-    private void beforeDelete() {
-        if (deleted) {
-            deletedDate = lastModifiedDate;
-            deletedBy = lastModifiedBy;
-        }
-    }
 }

@@ -1,4 +1,4 @@
-package com.example.bankSystem.utils.Enums;
+package com.example.bankSystem.enums;
 
 public enum ChangeType {
 

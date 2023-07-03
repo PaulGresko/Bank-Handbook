@@ -1,6 +1,7 @@
 package com.example.bankSystem.models.bankModels;
 
-import com.example.bankSystem.utils.Enums.ChangeType;
+import com.example.bankSystem.enums.ChangeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,10 +35,12 @@ public class BICDirectoryEntry{
 
     @Column(name = "change_type")
     @Enumerated(EnumType.STRING)
-    private ChangeType changeType; // todo убедиться в надобности
+    private ChangeType changeType;
+
 
     @ManyToOne
     @JoinColumn(name = "ed807_id")
+    @JsonIgnore
     private ED807 ed807;
 
     @OneToOne(mappedBy = "bicDirectoryEntry", cascade = CascadeType.ALL)

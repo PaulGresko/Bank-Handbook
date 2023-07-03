@@ -1,7 +1,7 @@
-package com.example.bankSystem.dto;
+package com.example.bankSystem.dto.parseXml;
 
 
-import com.example.bankSystem.utils.Enums.Rstr;
+import com.example.bankSystem.enums.RstrType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Temporal;
@@ -24,7 +24,7 @@ import java.util.Date;
 @AllArgsConstructor
 @XmlRootElement(name="RstrList")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class RstrListDto {
+public class RstrListXml {
 
     @XmlAttribute(name = "RstrDate")
     @Temporal(TemporalType.DATE)
@@ -32,5 +32,5 @@ public class RstrListDto {
 
     @XmlAttribute(name = "Rstr")
     @Enumerated(EnumType.STRING)
-    private Rstr rstr;
+    private RstrType rstr;
 }
