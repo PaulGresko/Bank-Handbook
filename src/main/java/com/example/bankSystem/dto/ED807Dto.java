@@ -22,7 +22,6 @@ public class ED807Dto {
     private Date edDate;
     private String edAuthor;
     private String edReceiver;
-    private String edNo;
     private CreationReason creationReason;
     private Date creationDateTime;
     private InfoTypeCode infoTypeCode;
