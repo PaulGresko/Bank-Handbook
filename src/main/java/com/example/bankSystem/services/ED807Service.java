@@ -3,20 +3,16 @@ package com.example.bankSystem.services;
 
 
 import com.example.bankSystem.dto.ED807Dto;
-import com.example.bankSystem.dto.parseXml.ED807Xml;
 import com.example.bankSystem.mapper.ED807Mapper;
-import com.example.bankSystem.mapper.ED807XmlMapper;
 import com.example.bankSystem.models.bankModels.*;
 import com.example.bankSystem.parser.Parser;
 import com.example.bankSystem.repositories.ED807Repository;
-import jakarta.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
@@ -60,15 +56,15 @@ public class ED807Service {
     @Transactional
     public ED807Dto update(Long id, ED807Dto dto){
         ED807 ed807 = ed807Repository.findById(id).orElseThrow(()-> new NoSuchElementException("ED807 not found"));
-        ed807.setTitle(dto.getTitle());
-        ed807.setFileName(dto.getFileName());
-        ed807.setEdDate(dto.getEdDate());
-        ed807.setEdAuthor(dto.getEdAuthor());
-        ed807.setCreationReason(dto.getCreationReason());
-        ed807.setCreationDateTime(dto.getCreationDateTime());
-        ed807.setInfoTypeCode(dto.getInfoTypeCode());
-        ed807.setBusinessDay(dto.getBusinessDay());
-        ed807.setDirectoryVersion(dto.getDirectoryVersion());
+        if(dto.getTitle()            != null) ed807.setTitle(dto.getTitle());
+        if(dto.getFileName()         != null) ed807.setFileName(dto.getFileName());
+        if(dto.getEdDate()           != null) ed807.setEdDate(dto.getEdDate());
+        if(dto.getEdAuthor()         != null) ed807.setEdAuthor(dto.getEdAuthor());
+        if(dto.getCreationReason()   != null) ed807.setCreationReason(dto.getCreationReason());
+        if(dto.getCreationDateTime() != null) ed807.setCreationDateTime(dto.getCreationDateTime());
+        if(dto.getInfoTypeCode()     != null) ed807.setInfoTypeCode(dto.getInfoTypeCode());
+        if(dto.getBusinessDay()      != null) ed807.setBusinessDay(dto.getBusinessDay());
+        if(dto.getDirectoryVersion() != 0   ) ed807.setDirectoryVersion(dto.getDirectoryVersion());
 
         return ed807Mapper.toDto(ed807Repository.save(ed807));
     }

@@ -45,10 +45,10 @@ public class HandbookService {
         if (handbook.getDeleted()) {
             throw new NoSuchElementException("Handbook was deleted");
         }
-        handbook.setCode(handbookDto.getCode());
-        handbook.setTitle(handbookDto.getTitle());
-        handbook.setValidFrom(handbookDto.getValidFrom());
-        handbook.setValidUntil(handbookDto.getValidUntil());
+        if(handbookDto.getCode() != null) handbook.setCode(handbookDto.getCode());
+        if(handbookDto.getTitle() != null) handbook.setTitle(handbookDto.getTitle());
+        if(handbookDto.getValidFrom() != null) handbook.setValidFrom(handbookDto.getValidFrom());
+        if(handbookDto.getValidUntil() != null) handbook.setValidUntil(handbookDto.getValidUntil());
         return handbookRepository.save(handbook);
     }
 

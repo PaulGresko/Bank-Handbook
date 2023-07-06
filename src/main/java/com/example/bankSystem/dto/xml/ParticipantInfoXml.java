@@ -1,4 +1,4 @@
-package com.example.bankSystem.dto.parseXml;
+package com.example.bankSystem.dto.xml;
 
 
 import com.example.bankSystem.enums.ParticipantStatus;

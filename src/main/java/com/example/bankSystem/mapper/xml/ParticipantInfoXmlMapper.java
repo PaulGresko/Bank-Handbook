@@ -1,6 +1,6 @@
-package com.example.bankSystem.mapper;
+package com.example.bankSystem.mapper.xml;
 
-import com.example.bankSystem.dto.parseXml.ParticipantInfoXml;
+import com.example.bankSystem.dto.xml.ParticipantInfoXml;
 import com.example.bankSystem.models.bankModels.ParticipantInfo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

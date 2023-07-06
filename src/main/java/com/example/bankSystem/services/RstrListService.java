@@ -18,7 +18,7 @@ public class RstrListService {
         this.rstrListRepository = rstrListRepository;
     }
 
-    public RstrList getByPartInfo(Long id){
-        return rstrListRepository.findByParticipantInfoId(id);
+    public RstrList getByPartInfo(Long bic){
+        return rstrListRepository.findByParticipantInfoId(bic);
     }
 }

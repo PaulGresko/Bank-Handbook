@@ -1,7 +1,7 @@
-package com.example.bankSystem.mapper;
+package com.example.bankSystem.mapper.xml;
 
 
-import com.example.bankSystem.dto.parseXml.BICDirectoryEntryXml;
+import com.example.bankSystem.dto.xml.BICDirectoryEntryXml;
 import com.example.bankSystem.models.bankModels.BICDirectoryEntry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

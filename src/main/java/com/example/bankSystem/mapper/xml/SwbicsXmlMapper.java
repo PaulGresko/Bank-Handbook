@@ -1,7 +1,7 @@
-package com.example.bankSystem.mapper;
+package com.example.bankSystem.mapper.xml;
 
 
-import com.example.bankSystem.dto.parseXml.SwbicsXml;
+import com.example.bankSystem.dto.xml.SwbicsXml;
 import com.example.bankSystem.models.bankModels.Swbics;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

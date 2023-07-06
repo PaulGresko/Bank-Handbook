@@ -80,7 +80,7 @@ public class ParticipantInfo {
     private String regN;
 
     @OneToOne
-    @JoinColumn(name = "bic_directory_entry_id")
+    @JoinColumn(name = "bic_id")
     @JsonIgnore
     private BICDirectoryEntry bicDirectoryEntry;
 

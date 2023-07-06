@@ -1,10 +1,8 @@
-package com.example.bankSystem.mapper;
+package com.example.bankSystem.mapper.xml;
 
-import com.example.bankSystem.dto.parseXml.ED807Xml;
+import com.example.bankSystem.dto.xml.ED807Xml;
 import com.example.bankSystem.models.bankModels.ED807;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeMap;
-import org.modelmapper.spi.DestinationSetter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

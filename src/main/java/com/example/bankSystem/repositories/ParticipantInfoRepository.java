@@ -13,7 +13,7 @@ public interface ParticipantInfoRepository extends JpaRepository<ParticipantInfo
     @Query(value = "select participant_info.id, ed807_id, bic, name_p, engl_name, reg_n, cntr_cd," +
             " rgn, ind, tnp, nnp, adr, prnt_bic, date_in, date_out, pt_type, srvcs, xch_type, uid, participant_status " +
             "from bic_directory_entry left join participant_info " +
-            "ON participant_info.bic_directory_entry_id = bic_directory_entry.id " +
+            "ON participant_info.bic_id = bic_directory_entry.id " +
             "where ed807_id = :ed807 " +
             "AND (:bic IS NULL or bic = :bic) " +
             "AND (name_p like %:name% ) " +
@@ -23,7 +23,7 @@ public interface ParticipantInfoRepository extends JpaRepository<ParticipantInfo
 
 
     @Query(value = "select COUNT(*) from bic_directory_entry left join participant_info " +
-            "ON participant_info.bic_directory_entry_id = bic_directory_entry.id " +
+            "ON participant_info.bic_id = bic_directory_entry.id " +
             "where ed807_id = :ed807 " +
             "AND (:bic IS NULL or bic = :bic) " +
             "AND (name_p like %:name% ) " +

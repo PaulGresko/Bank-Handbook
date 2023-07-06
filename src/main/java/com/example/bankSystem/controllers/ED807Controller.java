@@ -3,11 +3,8 @@ package com.example.bankSystem.controllers;
 
 
 import com.example.bankSystem.dto.ED807Dto;
-import com.example.bankSystem.dto.parseXml.ED807Xml;
 import com.example.bankSystem.models.bankModels.ED807;
-import com.example.bankSystem.parser.Parser;
 import com.example.bankSystem.services.ED807Service;
-import jakarta.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

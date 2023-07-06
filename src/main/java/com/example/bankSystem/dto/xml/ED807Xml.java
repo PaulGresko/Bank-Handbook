@@ -1,6 +1,5 @@
-package com.example.bankSystem.dto.parseXml;
+package com.example.bankSystem.dto.xml;
 
-import com.example.bankSystem.dto.parseXml.BICDirectoryEntryXml;
 import com.example.bankSystem.enums.CreationReason;
 import com.example.bankSystem.enums.InfoTypeCode;
 import jakarta.persistence.EnumType;

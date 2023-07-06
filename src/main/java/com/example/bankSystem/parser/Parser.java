@@ -1,7 +1,7 @@
 package com.example.bankSystem.parser;
 
-import com.example.bankSystem.dto.parseXml.ED807Xml;
-import com.example.bankSystem.mapper.ED807XmlMapper;
+import com.example.bankSystem.dto.xml.ED807Xml;
+import com.example.bankSystem.mapper.xml.ED807XmlMapper;
 import com.example.bankSystem.models.bankModels.*;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
