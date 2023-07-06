@@ -2,7 +2,7 @@ package com.example.bankSystem.controllers;
 
 
 import com.example.bankSystem.dto.HandbookDto;
-import com.example.bankSystem.enums.HandbookType;
+import com.example.bankSystem.enums.handbook.HandbookType;
 import com.example.bankSystem.models.Handbook;
 import com.example.bankSystem.services.HandbookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/handbook")
@@ -23,19 +26,29 @@ public class HandbookController {
         this.service = service;
     }
 
+
+    @GetMapping
+    public void get(){
+        service.insert100Handbooks();
+    }
     @GetMapping("/{type}")
-    public ResponseEntity<List<Handbook>> getAll(@PathVariable String type, @RequestParam(defaultValue = "1") Integer page){
-        return ResponseEntity.ok(service.getAllByType(HandbookType.valueOf(type), page));
+    public List<Handbook> getAll(@PathVariable HandbookType type,
+                                                 @RequestParam(defaultValue = "0") Integer page,
+                                                 @RequestParam(defaultValue = "false") Boolean deleted,
+                                                 @RequestParam(defaultValue = "") String code,
+                                                 @RequestParam(defaultValue = "") String title,
+                                                 @RequestParam(required = false) Optional<LocalDate> date){
+        return service.getAllByCategory(page, type, deleted, code, title, date.orElse(null));
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Handbook> save(@RequestBody HandbookDto dto){
-        return ResponseEntity.ok(service.save(dto));
+    public Handbook save(@RequestBody HandbookDto dto){
+        return service.save(dto);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Handbook> update(@PathVariable Long id, @RequestBody HandbookDto dto){
-        return ResponseEntity.ok(service.update(id, dto));
+    public Handbook update(@PathVariable Long id, @RequestBody HandbookDto dto){
+        return service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")
@@ -45,12 +58,16 @@ public class HandbookController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Handbook> recovery(@PathVariable Long id){
-        return ResponseEntity.ok(service.recover(id));
+    public Handbook recovery(@PathVariable Long id){
+        return service.recover(id);
     }
 
     @GetMapping("/{type}/count")
-    public Long getCountByType(@PathVariable String type){
-        return service.getCountByType(HandbookType.valueOf(type));
+    public Map<String, Long> getCountByType(@PathVariable HandbookType type,
+                              @RequestParam(defaultValue = "false") Boolean deleted,
+                              @RequestParam(defaultValue = "") String code,
+                              @RequestParam(defaultValue = "") String title,
+                              @RequestParam(required = false) Optional<LocalDate> date){
+        return Map.of("count", service.getCountByType(type, deleted, code, title, date.orElse(null)));
     }
 }

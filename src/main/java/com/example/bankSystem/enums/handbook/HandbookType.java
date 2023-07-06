@@ -1,4 +1,4 @@
-package com.example.bankSystem.enums;
+package com.example.bankSystem.enums.handbook;
 
 public enum HandbookType {
     CreationReason,

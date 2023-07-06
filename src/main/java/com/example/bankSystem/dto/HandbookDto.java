@@ -1,6 +1,6 @@
 package com.example.bankSystem.dto;
 
-import com.example.bankSystem.enums.HandbookType;
+import com.example.bankSystem.enums.handbook.HandbookType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +11,7 @@ import java.util.Date;
 public class HandbookDto {
     private HandbookType type;
     private String code;
-    private String name;
+    private String title;
     private Date validFrom;
     private Date validUntil;
 

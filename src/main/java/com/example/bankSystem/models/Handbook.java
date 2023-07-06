@@ -1,7 +1,7 @@
 package com.example.bankSystem.models;
 
 
-import com.example.bankSystem.enums.HandbookType;
+import com.example.bankSystem.enums.handbook.HandbookType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,7 +31,7 @@ public class Handbook extends Audit {
     private String code;
 
     @Column
-    private String name;
+    private String title;
 
     @Column
     @Temporal(TemporalType.DATE)
