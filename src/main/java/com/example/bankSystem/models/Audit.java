@@ -34,4 +34,23 @@ public class Audit {
 
     @Column(name="deleted")
     private Boolean deleted = false;
+
+    @Column(name = "deleted_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date deletedDate;
+
+    @Column(name = "deleted_by")
+    private String deletedBy;
+
+    @PreUpdate
+    public void beforeDelete(){
+        if(getDeleted() && deletedDate == null){
+            deletedDate = lastModifiedDate;
+            deletedBy = lastModifiedBy;
+        }
+        if(!getDeleted() && deletedDate != null){
+            deletedDate = null;
+            deletedBy = null;
+        }
+    }
 }
