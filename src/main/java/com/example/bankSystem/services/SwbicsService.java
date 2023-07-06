@@ -18,8 +18,8 @@ public class SwbicsService {
         this.swbicsRepository = swbicsRepository;
     }
 
-    public Swbics getAllSwbicsByBic(Long id){
-        return swbicsRepository.findByBicDirectoryEntryId(id);
+    public Swbics getAllSwbicsByBic(Long bic){
+        return swbicsRepository.findByBicDirectoryEntryId(bic);
     }
 
 }

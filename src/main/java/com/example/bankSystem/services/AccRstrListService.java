@@ -7,6 +7,7 @@ import com.example.bankSystem.repositories.AccRstrListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,7 +20,7 @@ public class AccRstrListService {
         this.accRstrListRepository = accRstrListRepository;
     }
 
-    public List<AccRstrList> getByAccount(Long id){
-        return accRstrListRepository.findAllByAccountId(id);
+    public List<AccRstrList> getByAccount(Long account) {
+        return accRstrListRepository.findAllByAccountId(account);
     }
 }
