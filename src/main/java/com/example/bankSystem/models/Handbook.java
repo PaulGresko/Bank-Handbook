@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 
 import java.util.Date;
@@ -17,6 +18,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table
+@DynamicUpdate
 public class Handbook extends Audit {
 
     @Id
