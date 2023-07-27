@@ -2,6 +2,7 @@ package com.example.bankSystem.models;
 
 
 import com.example.bankSystem.enums.handbook.HandbookType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,9 +38,11 @@ public class Handbook extends Audit {
 
     @Column
     @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd.MM.yyyy")
     private Date validFrom;
 
     @Column
     @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd.MM.yyyy")
     private Date validUntil;
 }

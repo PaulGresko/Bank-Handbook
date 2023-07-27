@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 
 @Component
 public class AccountXmlMapper {
-
     private final ModelMapper modelMapper;
     private final AccRstrListXmlMapper accRstrListXmlMapper;
 
@@ -38,8 +37,7 @@ public class AccountXmlMapper {
         account.setAccRstrLists(accRstrListXmlMapper.toModelList(accountXml.getAccRstrLists()));
         return account;
     }
-    public List<Account> toModelList(List<AccountXml> accountXmlList){
+    public List<Account> toModelList(List<AccountXml> accountXmlList) {
         return accountXmlList.stream().map(this::toModel).collect(Collectors.toList());
     }
-
 }

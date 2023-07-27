@@ -1,0 +1,8 @@
+2023-07-27 18:34:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Значение слишком длинное для поля "TITLE CHARACTER VARYING(255)": "U&'1) \\0420\\0435\\0433\\043b\\0430\\043c\\0435\\043d\\0442\\043d\\043e\\0435 \\043d\\0430\\04... (397)"
+Value too long for column "TITLE CHARACTER VARYING(255)": "U&'1) \\0420\\0435\\0433\\043b\\0430\\043c\\0435\\043d\\0442\\043d\\043e\\0435 \\043d\\0430\\04... (397)"; SQL statement:
+insert into handbook (id, code, created_by, created_date, deleted, deleted_by, deleted_date, last_modified_by, last_modified_date, title, type, valid_from, valid_until) values (default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [22001-214]
+2023-07-27 18:34:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Значение слишком длинное для поля "TITLE CHARACTER VARYING(255)": "U&'1) \\0420\\0435\\0433\\043b\\0430\\043c\\0435\\043d\\0442\\043d\\043e\\0435 \\043d\\0430\\04... (397)"
+Value too long for column "TITLE CHARACTER VARYING(255)": "U&'1) \\0420\\0435\\0433\\043b\\0430\\043c\\0435\\043d\\0442\\043d\\043e\\0435 \\043d\\0430\\04... (397)"; SQL statement:
+insert into handbook (id, code, created_by, created_date, deleted, deleted_by, deleted_date, last_modified_by, last_modified_date, title, type, valid_from, valid_until) values (default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [22001-214]

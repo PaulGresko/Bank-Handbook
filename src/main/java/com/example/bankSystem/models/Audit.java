@@ -1,6 +1,7 @@
 package com.example.bankSystem.models;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,9 +18,9 @@ import java.util.Date;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class Audit {
-
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd.MM.yyyy HH:mm:ss")
     private Date createdDate;
 
     @CreatedBy
@@ -27,6 +28,7 @@ public class Audit {
 
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy HH:mm:ss")
     private Date lastModifiedDate;
 
     @LastModifiedBy
@@ -37,11 +39,11 @@ public class Audit {
 
     @Column(name = "deleted_date")
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy HH:mm:ss")
     private Date deletedDate;
 
     @Column(name = "deleted_by")
     private String deletedBy;
-
     @PreUpdate
     public void beforeDelete(){
         if(getDeleted() && deletedDate == null){

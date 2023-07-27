@@ -32,7 +32,7 @@ public class AccRstrList {
     private AccRstrType accRstr;
 
     @Column(name = "successor_bic")
-    private String SuccessorBic;
+    private String successorBic;
 
     @ManyToOne
     @JoinColumn(name = "accounts_id")

@@ -29,12 +29,12 @@ public class ED807Controller {
 
 
     @PostMapping("/actualize")
-    public ED807 actualize(@RequestParam Optional<String> title){
+    public ED807Dto actualize(@RequestParam Optional<String> title){
         return ed807Service.actualize(title);
     }
 
     @PostMapping("/save")
-    public ED807 parseFromFile(@RequestPart MultipartFile file,
+    public ED807Dto parseFromFile(@RequestPart MultipartFile file,
                                @RequestParam Optional<String> title) throws IOException {
         return ed807Service.parse(file, title);
     }
@@ -67,10 +67,10 @@ public class ED807Controller {
 
 
     @GetMapping("/count")
-    public Map<String, Long> getCount(@RequestParam(defaultValue = "") String title,
+    public Long getCount(@RequestParam(defaultValue = "") String title,
                                       @RequestParam(defaultValue = "false") Boolean deleted,
                                       @RequestParam(required = false) Optional<LocalDate> date1,
                                       @RequestParam(required = false) Optional<LocalDate> date2 ){
-        return Map.of("count", ed807Service.getCount(title, deleted, date1, date2));
+        return ed807Service.getCount(title, deleted, date1, date2);
     }
 }

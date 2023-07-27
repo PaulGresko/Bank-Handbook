@@ -30,8 +30,8 @@ public class HandbookService {
     }
 
 
-    public List<Handbook> getAllByCategory(int page, HandbookType type, Boolean deleted, String code, String title, LocalDate date) {
-        return handbookRepository.findByCategory(PageRequest.of(page,20),type.name(), deleted, code, title, date).getContent();
+    public List<Handbook> getAllByCategory(int page, String type, Boolean deleted, String code, String title, LocalDate date) {
+        return handbookRepository.findByCategory(PageRequest.of(page,20),type, deleted, code, title, date).getContent();
     }
 
     @Transactional
@@ -66,8 +66,8 @@ public class HandbookService {
         return handbookRepository.save(handbook);
     }
 
-    public Long getCountByType(HandbookType type, Boolean deleted, String code, String title, LocalDate date) {
-        return handbookRepository.getCountByCategory(type.name(), deleted, code, title, date);
+    public Long getCountByType(String type, Boolean deleted, String code, String title, LocalDate date) {
+        return handbookRepository.getCountByCategory(type, deleted, code, title, date);
     }
 
     public void insert100Handbooks() {

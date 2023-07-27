@@ -33,21 +33,21 @@ public class Parser {
         try {
             File zipFile = DownloadFile.download();
             File extractedXmlFile = DownloadFile.unzipFile(zipFile);
-            return parse(extractedXmlFile, title);
+            return parse(extractedXmlFile, title.orElse(extractedXmlFile.getName()));
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public ED807 parse(File file, Optional<String> title){
+    public ED807 parse(File file, String title){
         ED807Xml ed807Xml;
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(ED807Xml.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             ed807Xml = (ED807Xml) unmarshaller.unmarshal(file);
             ed807Xml.setFileName(file.getName());
-            ed807Xml.setTitle(title.orElse(file.getName()));
+            ed807Xml.setTitle(title);
             return saveElements(mapper.toModel(ed807Xml));
         } catch (JAXBException e) {
             System.out.println(e.getMessage());
@@ -55,10 +55,15 @@ public class Parser {
         return null;
 
     }
+    public ED807 parse(MultipartFile file, Optional<String> title) throws IOException {
 
+         ED807 ed807 = parse(convertMultipartFileToFile(file), title.orElse(file.getOriginalFilename()));
+         ed807.setFileName(file.getOriginalFilename());
+         return ed807;
+    }
 
     public File convertMultipartFileToFile(MultipartFile multipartFile) throws IOException {
-        File convertedFile = File.createTempFile(multipartFile.getOriginalFilename(),  null);
+        File convertedFile = File.createTempFile("converted_",  null);
         try (FileOutputStream fileOutputStream = new FileOutputStream(convertedFile)) {
             fileOutputStream.write(multipartFile.getBytes());
         } catch (IOException e){

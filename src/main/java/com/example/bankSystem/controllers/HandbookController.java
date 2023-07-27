@@ -32,7 +32,7 @@ public class HandbookController {
         service.insert100Handbooks();
     }
     @GetMapping("/{type}")
-    public List<Handbook> getAll(@PathVariable HandbookType type,
+    public List<Handbook> getAll(@PathVariable String type,
                                                  @RequestParam(defaultValue = "0") Integer page,
                                                  @RequestParam(defaultValue = "false") Boolean deleted,
                                                  @RequestParam(defaultValue = "") String code,
@@ -63,11 +63,11 @@ public class HandbookController {
     }
 
     @GetMapping("/{type}/count")
-    public Map<String, Long> getCountByType(@PathVariable HandbookType type,
+    public Long getCountByType(@PathVariable String type,
                               @RequestParam(defaultValue = "false") Boolean deleted,
                               @RequestParam(defaultValue = "") String code,
                               @RequestParam(defaultValue = "") String title,
                               @RequestParam(required = false) Optional<LocalDate> date){
-        return Map.of("count", service.getCountByType(type, deleted, code, title, date.orElse(null)));
+        return service.getCountByType(type, deleted, code, title, date.orElse(null));
     }
 }

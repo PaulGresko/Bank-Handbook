@@ -37,16 +37,16 @@ public class ED807Service {
 
 
     @Transactional
-    public ED807 actualize(Optional<String> title){
-       return ed807Repository.save(parser.actualization(title));
+    public ED807Dto actualize(Optional<String> title){
+       return ed807Mapper.toDto(ed807Repository.save(parser.actualization(title)));
     }
 
 
     @Transactional
-    public ED807 parse(MultipartFile file, Optional<String> title) throws  IOException {
-        ED807 ed807 = parser.parse(parser.convertMultipartFileToFile(file), title);
+    public ED807Dto parse(MultipartFile file, Optional<String> title) throws  IOException {
+        ED807 ed807 = parser.parse(file, title);
         ed807Repository.save(ed807);
-        return ed807;
+        return ed807Mapper.toDto(ed807);
     }
 
 
@@ -60,6 +60,7 @@ public class ED807Service {
         if(dto.getFileName()         != null) ed807.setFileName(dto.getFileName());
         if(dto.getEdDate()           != null) ed807.setEdDate(dto.getEdDate());
         if(dto.getEdAuthor()         != null) ed807.setEdAuthor(dto.getEdAuthor());
+        if(dto.getEdReceiver()       != null) ed807.setEdReceiver(dto.getEdReceiver());
         if(dto.getCreationReason()   != null) ed807.setCreationReason(dto.getCreationReason());
         if(dto.getCreationDateTime() != null) ed807.setCreationDateTime(dto.getCreationDateTime());
         if(dto.getInfoTypeCode()     != null) ed807.setInfoTypeCode(dto.getInfoTypeCode());
@@ -90,7 +91,7 @@ public class ED807Service {
 
     public List<ED807Dto> getByCategories(Integer page, String title, Boolean deleted, Optional<LocalDate> date1, Optional<LocalDate> date2){
         return ed807Mapper.toDtoList(ed807Repository.findByCategory(
-                PageRequest.of(page, 10),
+                PageRequest.of(page, 5),
                 title,
                 deleted,
                 date1.orElse(null),
