@@ -6,9 +6,7 @@ services:
     ports:
       - "9090:9090"
     networks:
-      app-network:
-        aliases:
-          - "backend"
+      - app-network
   frontend:
     image: paulgresko/bank-handbook-front
     container_name: frontend-container
