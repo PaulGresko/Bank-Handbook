@@ -33,8 +33,6 @@ public class SecurityConfig implements WebMvcConfigurer {
                 .authorizeHttpRequests()
                 .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
                 .requestMatchers(AntPathRequestMatcher.antMatcher("/swagger-ui/**")).permitAll()
-                .requestMatchers(AntPathRequestMatcher.antMatcher("/ed807/**")).permitAll()
-                .requestMatchers(AntPathRequestMatcher.antMatcher("/**")).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic(Customizer.withDefaults());
