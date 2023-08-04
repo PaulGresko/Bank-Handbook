@@ -1,0 +1,22 @@
+version: "3"
+services:
+  backend:
+    image: paulgresko/bank-handbook-back
+    container_name: backend-container
+    ports:
+      - "9090:9090"
+    networks:
+      app-network:
+        aliases:
+          - "backend"
+  frontend:
+    image: paulgresko/bank-handbook-front
+    container_name: frontend-container
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
