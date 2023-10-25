@@ -4,13 +4,12 @@
 Приложение позвляет получать, добавлять, удалять и редактировать справочную информацию.
 
 ## Используемый стэк:
-Backend: Spring Boot, Spring MVC, Spring Data, Spring Secuity, Docker.
-База данных: H2 Database.
-Взаимодействие между backend и frontend осуществляется посредством JSON, REST.
+Backend: Spring Boot, Spring MVC, Spring Data, Spring Secuity, Docker.   
+База данных: H2 Database.   
+Взаимодействие между backend и frontend осуществляется посредством JSON, REST.   
+
+## Описание API
 Для описания API используются Swagger.
-   
-## API
-API было описано с помощью Swagger.
 
 Для просмотра описания api необходимо запустить приложение и перейти по ссылке:
 
