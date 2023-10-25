@@ -4,12 +4,14 @@
 Приложение позвляет получать, добавлять, удалять и редактировать справочную информацию.
 
 ## Используемый стэк:
-Java, Spring Boot, Spring Data, Spring MVC, Spring Security, JAXB.
-База данных - H2.
+Backend: Spring Boot, Spring MVC, Spring Data, Spring Secuity, Docker.
+База данных: H2 Database.
+Взаимодействие между backend и frontend осуществляется посредством JSON, REST.
+Для описания API используются Swagger.
    
 ## API
 API было описано с помощью Swagger.
 
 Для просмотра описания api необходимо запустить приложение и перейти по ссылке:
 
-http://localhost:9090/swagger-ui/index.html#/
+http://localhost:9090/swagger-ui/#/
